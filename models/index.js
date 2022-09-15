@@ -17,5 +17,5 @@ Eval.belongsTo(Art, {
 });
 
 Art.hasMany(Eval, {
-    foreignKey: ''
-})
+    foreignKey: 'eval_id'
+});
