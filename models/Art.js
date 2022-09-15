@@ -1,6 +1,8 @@
+//create model
 const { Model, DataTypes } = require("sequelize");
 class Art extends Model {}
 Art.init(
+  //create schema
   {
     id: {
       type: DataTypes.INTEGER,
@@ -12,7 +14,7 @@ Art.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    },
+  },
   {
     sequelize,
     timestamps: false,
