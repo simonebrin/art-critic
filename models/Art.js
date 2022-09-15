@@ -12,12 +12,6 @@ Art.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    avg_eval: {
-        type: DataTypes.INTEGER,
-    },
-    comments: {
-        type: DataTypes.STRING
-    }
     },
   {
     sequelize,
