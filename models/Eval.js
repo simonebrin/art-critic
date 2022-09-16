@@ -1,4 +1,5 @@
 const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../config/config.js");
 class Eval extends Model {}
 Eval.init(
   {
@@ -9,8 +10,8 @@ Eval.init(
       autoIncrement: true,
     },
     eval_value: {
-        type: DataTypes.DECIMAL,
-        allowNull: false
+      type: DataTypes.DECIMAL,
+      allowNull: false,
     },
     art_id: {
       type: DataTypes.INTEGER,

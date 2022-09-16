@@ -1,5 +1,6 @@
 //create model
 const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../config/config.js");
 class Art extends Model {}
 Art.init(
   //create schema
