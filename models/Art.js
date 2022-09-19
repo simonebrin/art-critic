@@ -15,6 +15,11 @@ Art.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    link: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      }
+  
   },
   {
     sequelize,
