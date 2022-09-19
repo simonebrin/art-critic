@@ -1,4 +1,5 @@
 const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../config/config.js");
 class Comment extends Model {}
 Comment.init(
   {
@@ -9,27 +10,26 @@ Comment.init(
       autoIncrement: true,
     },
     comment_text: {
-        type: DataTypes.STRING,
-        allowNull: false,
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     art_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        references: {
-            model: "art",
-            key: "id"
-        }
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: "art",
+        key: "id",
+      },
     },
     user_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        references: {
-            model: "user",
-            key: "id"
-        }
-    }
- 
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: "user",
+        key: "id",
+      },
     },
+  },
   {
     sequelize,
     timestamps: false,
