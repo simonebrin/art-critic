@@ -18,7 +18,23 @@ Eval.belongsTo(Art, {
 });
 
 Art.hasMany(Eval, {
-    foreignKey: 'eval_id'
+    foreignKey: 'art_id'
+});
+
+User.hasMany(Eval, {
+  foreignKey: "user_id",
+});
+
+Eval.belongsTo(User, {
+  foreignKey: "user_id",
+});
+
+Art.hasMany(Comment, {
+  foreignKey: "art_id",
+});
+
+Comment.belongsTo(Art, {
+  foreignKey: "art_id",
 });
 
 
