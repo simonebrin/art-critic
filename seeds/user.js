@@ -1,3 +1,4 @@
+const sequelize = require("../config/config");
 const { User } = require("../models/index");
 
 function seedUser() {
