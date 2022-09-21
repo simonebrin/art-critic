@@ -26,11 +26,8 @@ router.get("/", async (req, res) => {
     // });
     const artData = await Art.findAll({
       include: [
-        {model: Comment, 
-        include: User}
-        // {
-        //   model: User,
-        // },
+        {model: Comment,
+        include: User,}
       ],
     });
     const art = artData.map((piece) => piece.get({ plain: true }));

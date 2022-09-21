@@ -10,7 +10,7 @@ Eval.init(
       autoIncrement: true,
     },
     eval_value: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     art_id: {

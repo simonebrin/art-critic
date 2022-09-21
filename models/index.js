@@ -25,7 +25,7 @@ User.hasMany(Eval, {
   foreignKey: "user_id",
 });
 
-Eval.belongsTo(User, {
+Eval.hasMany(User, {
   foreignKey: "user_id",
 });
 

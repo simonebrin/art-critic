@@ -1,8 +1,10 @@
-
-  {{#each art}}
+{{#each art}}
   <h2>{{name}}</h2>
-  <img src={{image}}/>
+  <img src={{image}} />
   {{#each comments}}
-  <p>{{comment_text}}</p>
+    <p>{{comment_text}}</p>
   {{/each}}
+  {{#each eval}}
+    <p>{{eval_value}}</p>
   {{/each}}
+{{/each}}
