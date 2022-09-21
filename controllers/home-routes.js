@@ -1,51 +1,28 @@
-const router = require('express').Router();
-const sequelize = require('../config/connection');
-const { Post, User, Comment, Vote } = require('../models');
+const router = require("express").Router();
+const sequelize = require("../config/config");
+const { Art, Comment, Eval, User } = require("../models");
 
 // get all posts for homepage
-router.get('/', (req, res) => {
-  console.log('======================');
-  Post.findAll({
-    attributes: [
-      'id',
-      'post_url',
-      'title',
-      'created_at',
-      [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
-    ],
-    include: [
-      {
-        model: Comment,
-        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-        include: {
-          model: User,
-          attributes: ['username']
-        }
-      },
-      {
-        model: User,
-        attributes: ['username']
-      }
-    ]
-  })
-    .then(dbPostData => {
-      const posts = dbPostData.map(post => post.get({ plain: true }));
+/*router.get("/", (req, res) => {
+  console.log("======================");
+  Art.findAll({})
+    .then((dbPostData) => {
+      const posts = dbPostData.map((post) => post.get({ plain: true }));
 
-      res.render('homepage', { posts });
+      res.render("homepage");
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
       res.status(500).json(err);
     });
+});*/
+
+router.get("/", (req, res) => {
+  res.render("homepage");
 });
 
-router.get('/login', (req, res) => {
-  if (req.session.loggedIn) {
-    res.redirect('/');
-    return;
-  }
-
-  res.render('login');
+router.get("/login", (req, res) => {
+  res.render("login");
 });
 
 module.exports = router;
