@@ -1,8 +1,8 @@
-<header>
-  <h1>
-    <a href="/">Art Critic</a>
-  </h1>
-  <nav>
-    <a href="/login">login</a>
-  </nav>
-</header>
+
+  {{#each art}}
+  <h2>{{name}}</h2>
+  <img src={{image}}/>
+  {{#each comments}}
+  <p>{{comment_text}}</p>
+  {{/each}}
+  {{/each}}

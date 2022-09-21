@@ -17,8 +17,29 @@ const { Art, Comment, Eval, User } = require("../models");
     });
 });*/
 
-router.get("/", (req, res) => {
-  res.render("homepage");
+router.get("/", async (req, res) => {
+  try {
+    // const artData = await Art.findAll({
+    //   include: [Comment, {
+    //     model: User
+    //   }], [Eval]
+    // });
+    const artData = await Art.findAll({
+      include: [
+        {model: Comment, 
+        include: User}
+        // {
+        //   model: User,
+        // },
+      ],
+    });
+    const art = artData.map((piece) => piece.get({ plain: true }));
+    console.log(art);
+    console.log(art[0].comments)
+    res.render("homepage", { art });
+  } catch (error) {
+    res.status(500).json(error);
+  }
 });
 
 router.get("/login", (req, res) => {
