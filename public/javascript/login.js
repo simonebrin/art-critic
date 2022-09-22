@@ -24,30 +24,37 @@ async function signupFormHandler(event) {
   }
 }
 
-async function loginFormHandler(event) {
+const loginFormHandler = async (event) => {
   event.preventDefault();
+  console.log("TRYING!!!!");
 
   const email = document.querySelector("#email-login").value.trim();
   const password = document.querySelector("#password-login").value.trim();
-
+  console.log(email, password);
+  const newUser = {
+    email: email,
+    password: password,
+  };
+  console.log(newUser);
   if (email && password) {
     const response = await fetch("/api/users/login", {
       method: "POST",
-      body: JSON.stringify({
-        email,
-        password,
-      }),
+      body: newUser,
       headers: { "Content-Type": "applcation/json" },
     });
 
     if (response.ok) {
-      document.location.replact("/");
+      document.location.replace("/");
     } else {
       alert(response.statusText);
     }
   }
-}
+};
 
 document
   .querySelector(".signup-form")
   .addEventListener("submit", signupFormHandler);
+
+document
+  .querySelector(".login-form")
+  .addEventListener("submit", loginFormHandler);

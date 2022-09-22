@@ -16,10 +16,12 @@ router.post("/", (req, res) => {
 });
 
 //sign in
-router.post("/signin", (req, res) => {
+router.post("/login", (req, res) => {
+  console.log("===================ROUTE HIT================");
+  console.log(req.body);
   User.findOne({
     where: {
-      username: req.body.username,
+      email: req.body.email,
       password: req.body.password,
     },
   })
@@ -28,6 +30,13 @@ router.post("/signin", (req, res) => {
         res.sendStatus(400);
         return;
       }
+      console.log(dbUserData);
+      req.session.save(() => {
+        (req.session.userId = dbUserData.id),
+          (req.session.username = dbUserData.username),
+          (req.session.loggedIn = true);
+      });
+      console.log(req.session);
 
       res.sendStatus(200);
     })
