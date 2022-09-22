@@ -1,4 +1,21 @@
-{{#each art}}
-  <h2>{{name}}</h2>
+<div class="art">{{#each art}}
+  {{!-- <div class="piece">
+    <h2>{{name}}</h2>
   <a href="/art/{{id}}"><img src={{image}} /></a>
+  </div> --}}
+  <div class="row">
+  <div class="col-lg-2">
+  <div class="card">
+      <div class="card-body">
+  <img src={{image}} class="card-img-top" alt="...">
+
+    <h5 class="card-title">{{name}}</h5>
+    <a href="/art/{{id}}" class="btn btn-primary">Evaluate this piece</a>
+  </div>
+</div>
+</div>
+</div>
 {{/each}}
+</div>
+
+{{!-- style="width: 18rem;" --}}

@@ -179,3 +179,8 @@ footer {
   padding: 1%;
   font-size: 110%;
 }
+
+.art {
+  display: flex;
+  flex-wrap: wrap;
+}

@@ -16,7 +16,7 @@ router.post("/", (req, res) => {
 });
 
 //sign in
-router.post("/signin", (req, res) => {
+router.post("/login", (req, res) => {
   User.findOne({
     where: {
       username: req.body.username,
