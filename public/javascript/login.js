@@ -37,11 +37,11 @@ async function loginFormHandler(event) {
         email,
         password,
       }),
-      headers: { "Content-Type": "applcation/json" },
+      headers: { "Content-Type": "application/json" },
     });
 
     if (response.ok) {
-      document.location.replact("/");
+      document.location.replace("/");
     } else {
       alert(response.statusText);
     }
@@ -51,3 +51,7 @@ async function loginFormHandler(event) {
 document
   .querySelector(".signup-form")
   .addEventListener("submit", signupFormHandler);
+
+document
+  .querySelector(".login-form")
+  .addEventListener("submit", loginFormHandler);
