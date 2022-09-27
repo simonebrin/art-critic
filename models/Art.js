@@ -20,6 +20,10 @@ Art.init(
       allowNull: false,
       }
   
+    image: {
+      type: DataTypes.STRING,
+      // allowNull: false
+    }
   },
   {
     sequelize,

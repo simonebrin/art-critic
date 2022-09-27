@@ -1,0 +1,22 @@
+  <div class="container-fluid">
+  {{#each art}}
+    <div class="row row-cols-auto">
+      <div class="col">
+        <div class="card border-primary text-center style="width: 18rem;">
+          <div class="card-body">
+            <img src={{image}} class="card-img-top" alt="..." />
+            <h5 class="card-title">{{name}}</h5>
+            <a href="/art/{{id}}" class="btn btn-primary">Evaluate this piece</a>
+          </div>
+        </div>
+        </div>
+      </div>
+  {{/each}}
+</div>
+
+{{! style="width: 18rem;" }}
+
+{{!-- <div class="piece">
+    <h2>{{name}}</h2>
+  <a href="/art/{{id}}"><img src={{image}} /></a>
+  </div> --}}

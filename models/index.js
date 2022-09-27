@@ -13,13 +13,30 @@ Comment.belongsTo(User, {
   foreignKey: "user_id",
 });
 
+User.hasMany(Eval, {
+  foreignKey: "user_id",
+});
+
+Eval.belongsTo(User, {
+  foreignKey: "user_id",
+});
+
+Art.hasMany(Eval, {
+    foreignKey: 'art_id'
+});
+
 Eval.belongsTo(Art, {
   foreignKey: "art_id",
 });
 
-Art.hasMany(Eval, {
-  foreignKey: "",
+Art.hasMany(Comment, {
+  foreignKey: "art_id",
 });
+
+Comment.belongsTo(Art, {
+  foreignKey: "art_id",
+});
+
 
 //export models
 module.exports = {
