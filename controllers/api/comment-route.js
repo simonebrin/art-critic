@@ -30,7 +30,7 @@ router.post("/", (req, res) => {
   Comment.create({
     comment_text: req.body.comment_text,
     art_id: req.body.art_id,
-    user_id: req.body.user_id,
+    user_id: req.session.userId,
   })
     .then((comment) => res.json(comment))
     .catch((err) => {
