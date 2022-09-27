@@ -15,12 +15,7 @@ Art.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    link: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      }
-  
-    image: {
+   image: {
       type: DataTypes.STRING,
       // allowNull: false
     }
