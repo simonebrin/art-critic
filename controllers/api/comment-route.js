@@ -9,7 +9,7 @@ router.get("/", (req, res) => {
     })
     .catch(function (error) {
       console.error(error);
-      res.sendStatus(500);
+      res.status(500).json(error);
     });
 });
 
@@ -21,7 +21,7 @@ router.get("/:id", (req, res) => {
     })
     .catch(function (error) {
       console.error(error);
-      res.sendStatus(500);
+      res.status(500).json(error);
     });
 });
 
