@@ -9,22 +9,42 @@
 
 <div class="container text-center">
   <div class="row">
-    <div class="col">
-<div class="card text-center" style="width: 18rem;">
-  <img src={{image}} class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">{{name}}</h5>
-    <p class="card-text">This was done by Alice Neel in 1981.</p>
+    <div class="col-sm-3">
+      <div class="card text-center" style="width: 18rem;">
+        <img src={{image}} class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">{{name}}</h5>
+          <p class="card-text">This was done by Alice Neel in 1981.</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          {{#each comments}}
+            <li class="list-group-item">{{comment_text}}</li>
+          {{/each}}
+          {{#each evals}}
+            <li class="list-group-item">{{eval_value}}</li>
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+    <div class="col-sm-9">
+      <form class="comment-form">
+        <div>
+          <label for="comment">comment:</label>
+          <input type="text" id="comment" />
+        </div>
+        <div>
+          <button type="submit">submit</button>
+        </div>
+      </form>
+      <form class="evaluation-form">
+        <div>
+          <label for="evaluation">evaluation:</label>
+          <input type="number" id="evaluation" />
+        </div>
+        <div>
+          <button type="submit">submit</button>
+        </div>
+      </form>
+    </div>
   </div>
-  {{#each comments}}
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">{{comment_text}}</li>
-    {{/each}}
-    {{#each evals}}
-    <li class="list-group-item">{{eval_value}}</li>
-    {{/each}}
-  </ul>
-  </div>
-  </div>
-  </div>
-  
+</div>
