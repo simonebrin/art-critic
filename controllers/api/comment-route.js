@@ -26,6 +26,7 @@ router.get("/:id", (req, res) => {
 });
 
 router.post("/", (req, res) => {
+  console.log("hit post route for comment");
   // create a new comment
   Comment.create({
     comment_text: req.body.comment_text,
