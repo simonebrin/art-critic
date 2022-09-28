@@ -24,29 +24,30 @@
             <li class="list-group-item">{{eval_value}}</li>
           {{/each}}
         </ul>
+        {{!-- <div class="col-sm-3"> --}}
+          <form class="comment-form">
+            <div>
+              <label for="comment">comment:</label>
+              <input type="text" id="comment" />
+            </div>
+            <div>
+              <button type="submit" , data-id="{{art.id}}">submit</button>
+            </div>
+          </form>
+          <form class="evaluation-form">
+            <div>
+              <label for="evaluation">evaluation:</label>
+              <input type="number" id="evaluation" />
+            </div>
+            <div>
+              <button type="submit" , data-id="{{art.id}}">submit</button>
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
-    <div class="col-sm-9">
-      <form class="comment-form">
-        <div>
-          <label for="comment">comment:</label>
-          <input type="text" id="comment" />
-        </div>
-        <div>
-          <button type="submit" , data-id="{{art.id}}">submit</button>
-        </div>
-      </form>
-      <form class="evaluation-form">
-        <div>
-          <label for="evaluation">evaluation:</label>
-          <input type="number" id="evaluation" />
-        </div>
-        <div>
-          <button type="submit">submit</button>
-        </div>
-      </form>
     </div>
   </div>
 </div>
 
 <script src="/javascript/comment.js"></script>
+<script src="/javascript/eval.js"></script>
