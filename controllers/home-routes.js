@@ -61,8 +61,8 @@ router.get("/", async (req, res) => {
       ],
     });
     const art = artData.map((piece) => piece.get({ plain: true }));
-    console.log(art);
-    console.log(art[0].evals);
+    // console.log(art);
+    // console.log(art[0].evals);
     res.render("homepage", { art });
   } catch (error) {
     console.error(error);
