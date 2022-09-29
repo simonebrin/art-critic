@@ -3,22 +3,22 @@ const { User } = require("../models/index");
 
 async function seedUser() {
   await User.create({
-    name: "Simone",
+    username: "Simone",
     email: "simone@simone.com",
     password: "password1",
   });
   await User.create({
-    name: "Emily",
+    username: "Emily",
     email: "emily@emily.com",
     password: "password2",
   });
   await User.create({
-    name: "Aaron",
+    username: "Aaron",
     email: "aaron@aaron.com",
     password: "password3",
   });
   await User.create({
-    name: "Jarret",
+    username: "Jarret",
     email: "jarret@jarret.com",
     password: "password4",
   });
