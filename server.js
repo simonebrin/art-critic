@@ -5,10 +5,10 @@ const exphbs = require("express-handlebars");
 const passport = require("passport");
 const flash = require("express-flash");
 
-const initializePassport = require("./passport-config");
+/*const initializePassport = require("./passport-config");
 initializePassport(passport, (email) => {
   return user.find((user) => user.email === email);
-});
+});*/
 
 const app = express();
 const PORT = process.env.PORT || 3001;
