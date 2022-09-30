@@ -5,7 +5,7 @@ const connection = require("../config/config");
 const seedEval = require("./evaluation");
 
 const seedAll = async () => {
-  await connection.sync({ force: true });
+  await connection.sync({ force: false });
   await seedArt();
   await seedUser();
   await seedComment();
