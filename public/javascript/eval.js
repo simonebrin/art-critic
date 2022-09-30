@@ -2,16 +2,19 @@ async function evalFormHandler(event) {
   event.preventDefault();
 
   const eval = document.querySelector("#evaluation").value.trim();
+    const queryString = document.location.href;
+    console.log(queryString);
+    const splitString = queryString.split("/");
+    const artId = splitString[splitString.length - 1];
+    console.log(artId);
 
   if (eval) {
     console.log("eval = ", eval);
+    const evalToAdd = {eval_value: eval, art_id: artId };
+    console.log(evalToAdd);
     const response = await fetch("/api/evals", {
       method: "POST",
-      body: JSON.stringify({
-        eval_value: eval,
-        //art_id: event.target.getAttribute("data-id"),
-        art_id: 1,
-      }),
+      body: JSON.stringify(evalToAdd),
       headers: { "Content-Type": "application/json" },
     });
 
