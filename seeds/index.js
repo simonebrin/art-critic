@@ -5,12 +5,12 @@ const connection = require("../config/config");
 const seedEval = require("./evaluation");
 
 const seedAll = async () => {
-  await connection.sync({ force: false });
+  await connection.sync({ force: true });
   await seedArt();
   await seedUser();
   await seedComment();
     await seedEval();
-  process.exit(0);
+  // process.exit(0);
 };
 
 seedAll();
