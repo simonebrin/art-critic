@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3001;
 
 const sequelize = require("./config/config");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
-require("./seeds");
+
 
 const sess = {
   secret: "Super secret secret",
@@ -34,5 +34,6 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(require("./controllers/"));
 
 sequelize.sync({ force: false }).then(() => {
+  require("./seeds");
   app.listen(PORT, () => console.log("Now listening"));
 });
