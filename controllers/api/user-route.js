@@ -16,10 +16,10 @@ initializePassport(
   passport,
   (email) => User.find((user) => user.email === email),
   (id) => User.find((user) => user.id === id)
-);
+);*/
 
 // POST /api/users
-router.post("/", (req, res) => {
+/*router.post("/", (req, res) => {
   User.create({
     username: req.body.username,
     email: req.body.email,
@@ -58,37 +58,39 @@ router.post("/", (req, res) => {
 });*/
 
 passport.use(
-  new LocalStrategy(function verify(username, password, cb) {
-    console.log("==========", username, "===============");
+  "local",
+  new LocalStrategy(function verify(/*username,*/ email, password, cb) {
+    console.log("==========", email, "===============");
     User.findOne({
       where: {
-        username: username,
-        //password: req.body.password,
+        email: email,
       },
     })
       .then((dbUserData) => {
         console.log("==========", dbUserData, "===============");
+
+        if (!dbUserData.password === password) {
+          return cb(null, false);
+        }
+
         if (dbUserData.password === password) {
           return cb(null, dbUserData);
         }
       })
       .catch((err) => {
         console.log(err);
-        //res.status(500).json(err);
+        res.status(500).json(err);
       });
   })
 );
 
 router.post(
-  "/login",
+  "/login/password",
   passport.authenticate("local", {
     successRedirect: "/",
     failureRedirect: "/login",
     failureFlash: true,
-  }),
-  function (req, res) {
-    res.send(req.user.username);
-  }
+  })
 );
 
 module.exports = router;

@@ -26,21 +26,22 @@ async function signupFormHandler(event) {
 
 async function loginFormHandler(event) {
   event.preventDefault();
-  const username = document.querySelector("#email-login").value;
+  //const username = document.querySelector("#email-login").value;
+  const email = document.querySelector("#email-login").value;
   const password = document.querySelector("#password-login").value;
 
-  if (username && password) {
+  if (/*username*/ email && password) {
     const response = await fetch("/user/login", {
       method: "POST",
       body: JSON.stringify({
-        username,
+        //username,
+        email,
         password,
       }),
       headers: { "Content-Type": "application/json" },
     });
 
     if (response.ok) {
-      debugger;
       //document.location.replace("/");
     } else {
       alert(response.statusText);

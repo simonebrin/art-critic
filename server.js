@@ -4,6 +4,7 @@ const session = require("express-session");
 const exphbs = require("express-handlebars");
 const passport = require("passport");
 const flash = require("express-flash");
+const SQLiteStore = require("connect-sqlite3")(session);
 
 /*const initializePassport = require("./passport-config");
 initializePassport(passport, (email) => {
@@ -28,6 +29,7 @@ const sess = {
 };
 
 app.use(session(sess));
+//app.use(passport.authenticate(session));
 app.use(flash());
 
 app.use(passport.initialize());
