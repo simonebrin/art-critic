@@ -63,7 +63,7 @@ router.get("/", async (req, res) => {
     const art = artData.map((piece) => piece.get({ plain: true }));
     // console.log(art);
     // console.log(art[0].evals);
-    res.render("homepage", { art });
+    res.render("homepage", { art, loggedIn: req.session.loggedIn });
   } catch (error) {
     console.error(error);
     res.status(500).json(error);
