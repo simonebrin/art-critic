@@ -1,6 +1,19 @@
 const router = require("express").Router();
-const passport = require("passport");
+var passport = require("passport");
+var LocalStrategy = require("passport-local");
 const { User } = require("../../models");
+
+passport.serializeUser(function (user, cb) {
+  process.nextTick(function () {
+    cb(null, { id: user.id, email: user.email });
+  });
+});
+
+passport.deserializeUser(function (id, cb) {
+  process.nextTick(function () {
+    return cb(null, id);
+  });
+});
 
 router.get("/", (req, res) => {
   User.findAll({
@@ -14,7 +27,7 @@ router.get("/", (req, res) => {
 });
 
 // POST /api/users
-/*router.post("/", (req, res) => {
+router.post("/", (req, res) => {
   User.create({
     username: req.body.username,
     email: req.body.email,
@@ -28,7 +41,7 @@ router.get("/", (req, res) => {
       console.log(err);
       res.status(500).json(err);
     });
-});*/
+});
 
 router.post("/", (req, res) => {
   User.create({
@@ -78,6 +91,33 @@ router.post("/login", (req, res) => {
     });
   });
 });
+
+passport.use(
+  new LocalStrategy(function (email, password, done) {
+    User.findOne({ email: email }, function (err, user) {
+      if (err) {
+        return done(err);
+      }
+      if (!user) {
+        return done(null, false, {
+          message: "Incorrect username or password.",
+        });
+      }
+      if (!user.verifyPassword(password)) {
+        return done(null, false);
+      }
+      return done(null, user);
+    });
+  })
+);
+
+router.post(
+  "/login",
+  passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/login",
+  })
+);
 
 router.post("/logout", (req, res) => {
   if (req.session.loggedIn) {

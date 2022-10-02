@@ -1,4 +1,5 @@
 const path = require("path");
+var passport = require("passport");
 const express = require("express");
 const session = require("express-session");
 const exphbs = require("express-handlebars");
@@ -30,6 +31,8 @@ app.set("view engine", "handlebars");
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
+
+app.use(passport.session(sess));
 
 app.use(require("./controllers/"));
 
